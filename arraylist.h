@@ -107,15 +107,55 @@ int LocateElem(SqList L, int e)
     }
     return 0;
 }
+Status Insertlist(SqList L,int i,int e)
+{
+    if (!L.elem) {
+        return ERROR;
 
-Status Insertlist(SqList L,) {
+    }
+    if (i<1 || i>L.length - 1) {
 
+        return ERROR;
 
-
-
-
+    }
+    int j;
+    for(j = L.length - 1;j>i;j--)
+    {
+        L.elem[j] = L.elem[j - 1];
+    }
+    L.elem[i] = e;
+    L.length++;
 
 }
+Status Detelelist(SqList L, int i, int e) {
+    if (i<1 || i>L.length - 1) {
+        return ERROR;
+
+    }
+    e=L.elem[i-1];
+    for (int j = i; j < L.length-1; j++)
+    {
+        L.elem[j] = L.elem[j + 1];
+
+    }
+    L.length--;
+
+    return OK;
+}
+Status Createlist(SqList &L,int n) {
+    L.length = 0;
+
+
+
+    for (int i = 0; i < n; i++) {
+        L.length++;
+        scanf_s("%d", &L.elem[i]);
+    }
+
+    return OK;
+
+}
+
 
 
 
